@@ -1,0 +1,13 @@
+[32556:3212:0606/175346.382:INFO:components\enterprise\browser\controller\chrome_browser_cloud_management_controller.cc:202] No machine level policy manager exists.
+[26496:61964:0606/175346.520:VERBOSE1:components\viz\service\main\viz_main_impl.cc:85] VizNullHypothesis is disabled (not a warning)
+[26496:61964:0606/175346.520:ERROR:gpu\ipc\service\gpu_channel_manager.cc:946] Failed to create GLES3 context, fallback to GLES2.
+[26496:61964:0606/175346.521:ERROR:gpu\ipc\service\gpu_channel_manager.cc:957] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[19072:50040:0606/175346.579:INFO:third_party\webrtc\system_wrappers\source\cpu_info.cc:56] Available number of cores: 16
+[60232:45824:0606/175346.580:INFO:third_party\webrtc\system_wrappers\source\cpu_info.cc:56] Available number of cores: 16
+[26496:61964:0606/175346.646:ERROR:gpu\ipc\service\gpu_channel_manager.cc:946] Failed to create GLES3 context, fallback to GLES2.
+[26496:61964:0606/175346.647:ERROR:gpu\ipc\service\gpu_channel_manager.cc:957] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[26496:61964:0606/175346.647:ERROR:gpu\ipc\service\gpu_channel_manager.cc:946] Failed to create GLES3 context, fallback to GLES2.
+[26496:61964:0606/175346.648:ERROR:gpu\ipc\service\gpu_channel_manager.cc:957] ContextResult::kFatalFailure: Failed to create shared context for virtualization.
+[40548:60248:0606/175346.861:INFO:third_party\webrtc\system_wrappers\source\cpu_info.cc:56] Available number of cores: 16
+[32848:59528:0606/175346.872:INFO:third_party\webrtc\system_wrappers\source\cpu_info.cc:56] Available number of cores: 16
+[32556:3212:0606/175346.880:INFO:CONSOLE:0] "The Content-Security-Policy directive name '*' contains one or more invalid characters. Only ASCII alphanumeric characters or dashes '-' are allowed in directive names.", source: http://110.90.119.97:8808/nccloud/resources/workbench/public/common/main/index.html# (0)

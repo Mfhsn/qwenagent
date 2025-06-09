@@ -1,0 +1,8 @@
+conda activate qwenagent
+cd 报销Agent_new\报销Agent
+streamlit run app.py
+
+我4月23号坐火车从福州出发前往深圳看机器人展，25号回来的
+
+
+http://110.90.119.97:8808/nccloud/resources/workbench/public/common/main/index.html#
