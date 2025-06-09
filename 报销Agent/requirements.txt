@@ -100,7 +100,7 @@ notebook==7.4.1
 notebook_shim==0.2.4
 numpy==2.2.6
 openai==1.82.1
-# OpenCV相关依赖
+# OpenCV相关依赖（Linux环境专用）
 # opencv-python==4.11.0.86  # 在Linux环境可能导致libGL.so.1错误
 opencv-python-headless==4.11.0.86  # Linux无GUI环境适用
 # opencv-contrib-python==4.11.0.86  # 在Linux环境可能导致libGL.so.1错误
@@ -166,6 +166,7 @@ ruff==0.11.8
 safehttpx==0.1.6
 seaborn==0.13.2
 selenium==4.32.0
+webdriver-manager==4.0.2  # 添加WebDriver管理器以自动下载适配的ChromeDriver
 semantic-version==2.10.0
 Send2Trash==1.8.3
 shellingham==1.5.4
