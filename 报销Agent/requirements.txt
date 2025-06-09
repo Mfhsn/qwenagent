@@ -101,9 +101,9 @@ notebook_shim==0.2.4
 numpy==2.2.6
 openai==1.82.1
 # OpenCV相关依赖
-opencv-python==4.11.0.86
+# opencv-python==4.11.0.86  # 在Linux环境可能导致libGL.so.1错误
 opencv-python-headless==4.11.0.86  # Linux无GUI环境适用
-opencv-contrib-python==4.11.0.86  # 包含额外OpenCV模块
+# opencv-contrib-python==4.11.0.86  # 在Linux环境可能导致libGL.so.1错误
 pyzbar==0.1.9  # 条形码识别
 pytesseract==0.3.13  # OCR文字识别
 pdf2image==1.17.0
