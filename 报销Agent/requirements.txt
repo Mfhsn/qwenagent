@@ -100,7 +100,13 @@ notebook==7.4.1
 notebook_shim==0.2.4
 numpy==2.2.6
 openai==1.82.1
+# OpenCV相关依赖
 opencv-python==4.11.0.86
+opencv-python-headless==4.11.0.86  # Linux无GUI环境适用
+opencv-contrib-python==4.11.0.86  # 包含额外OpenCV模块
+pyzbar==0.1.9  # 条形码识别
+pytesseract==0.3.13  # OCR文字识别
+pdf2image==1.17.0
 orjson==3.10.18
 outcome==1.3.0.post0
 overrides==7.7.0
