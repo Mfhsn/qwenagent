@@ -5,10 +5,14 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 import time
 import os
 import json
 import sys
+import subprocess
+import platform
 
 
 # 添加当前目录到sys.path，确保能正确导入utils模块
@@ -16,8 +20,47 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from utils_1 import fill_form, load_json_data, get_json_files_from_folder, handle_checkbox, find_form_fields_with_js, handle_special_field, handle_reimbursement_person
 
 
-service = Service(port=9515)  # 使用不同于默认的端口
-driver = webdriver.Chrome(service=service)
+# 设置Chrome选项
+chrome_options = Options()
+chrome_options.add_argument('--headless')  # 无头模式
+chrome_options.add_argument('--no-sandbox')  # 在Docker/Cloud中必需
+chrome_options.add_argument('--disable-dev-shm-usage')  # 解决内存不足问题
+chrome_options.add_argument('--disable-gpu')  # 禁用GPU加速
+
+# 自动下载和设置ChromeDriver
+try:
+    # 使用webdriver_manager自动下载ChromeDriver
+    driver_path = ChromeDriverManager().install()
+    
+    # 在Linux环境中，确保ChromeDriver有执行权限
+    if platform.system() == 'Linux':
+        try:
+            # 尝试添加执行权限
+            subprocess.run(['chmod', '+x', driver_path], check=True)
+            print(f"已添加ChromeDriver执行权限: {driver_path}")
+        except Exception as e:
+            print(f"无法添加ChromeDriver执行权限: {e}")
+            print("如果在Streamlit Cloud环境中，请确认requirements.txt中包含正确的依赖")
+    
+    # 使用下载的ChromeDriver创建服务
+    service = Service(driver_path)
+    driver = webdriver.Chrome(service=service, options=chrome_options)
+    print("成功初始化Chrome WebDriver")
+    
+except Exception as e:
+    print(f"自动安装ChromeDriver失败: {e}")
+    print("尝试使用内置Chrome...")
+    
+    # 在Streamlit Cloud环境中尝试使用系统Chrome
+    try:
+        service = Service()
+        driver = webdriver.Chrome(service=service, options=chrome_options)
+        print("使用系统Chrome成功")
+    except Exception as e2:
+        print(f"使用系统Chrome失败: {e2}")
+        print("尝试使用固定端口方式...")
+        service = Service(port=9515)
+        driver = webdriver.Chrome(service=service, options=chrome_options)
 
 
 # 如果当前有多个标签页，确保使用正确的标签页
@@ -316,7 +359,7 @@ except Exception as e:
 
 # 9. 加载transportation文件夹中的JSON数据文件
 print("准备处理transportation文件夹中的JSON文件...")
-transportation_folder = "C:/Users/97818/Desktop/project/rpa_test/报销Agent_new/报销Agent/json/transportation"
+transportation_folder = "C:/Users/97818/Desktop/报销Agent_new/报销Agent/json/transportation"
 print(f"transportation文件夹路径: {transportation_folder}")
 
 # 使用utils中的函数获取JSON文件列表
@@ -476,7 +519,7 @@ try:
     print("\n\n====== 开始处理hotel文件夹 ======\n")
     
     # 获取hotel文件夹路径
-    hotel_folder = "C:/Users/97818/Desktop/project/rpa_test/报销Agent_new/报销Agent/json/hotel"
+    hotel_folder = "C:/Users/97818/Desktop/报销Agent_new/报销Agent/json/hotel"
     print(f"hotel文件夹路径: {hotel_folder}")
     
     # 定义hotel区域的按钮XPath
