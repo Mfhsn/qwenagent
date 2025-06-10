@@ -2,13 +2,21 @@ import json
 import base64
 import tempfile
 import os
+import platform
 from typing import Dict, List, Any, Optional, Union
+# 确保CV2使用headless模式
+os.environ['OPENCV_HEADLESS'] = '1'
 import cv2
 import numpy as np
 from qwen_agent.tools.base import BaseTool, register_tool
 from config import OCR_CONFIG
 import fitz  # PyMuPDF
 from utils.helpers import validate_pdf_file
+
+# 检测是否在Streamlit Cloud环境中运行
+is_streamlit_cloud = os.environ.get('STREAMLIT_RUNTIME_ENV') == 'cloud'
+if is_streamlit_cloud:
+    print("InvoiceImageProcessor: 检测到Streamlit Cloud环境")
 
 @register_tool('invoice_image_processor')
 class InvoiceImageProcessor(BaseTool):
