@@ -5,6 +5,19 @@ import base64
 import streamlit as st
 from datetime import datetime
 import pandas as pd
+import platform
+import sys
+
+# 设置环境变量，确保在Streamlit Cloud环境中正确运行
+os.environ['OPENCV_HEADLESS'] = '1'  # 强制OpenCV使用headless模式
+os.environ['SELENIUM_HEADLESS'] = 'true'  # 确保Selenium使用无头模式
+os.environ['CHROME_ARGS'] = '--no-sandbox --headless --disable-gpu --disable-dev-shm-usage'
+
+# 检测是否在Streamlit Cloud环境中运行
+is_streamlit_cloud = os.environ.get('STREAMLIT_RUNTIME_ENV') == 'cloud'
+if is_streamlit_cloud:
+    print("检测到Streamlit Cloud环境，启用云环境特定配置")
+    # 添加特定于Streamlit Cloud的配置
 
 # 导入配置
 from config import (
